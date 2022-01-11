@@ -59,11 +59,14 @@ function initialize() {
   });
 
   let geometry = new THREE.BoxBufferGeometry(1, 1, 1);
-  let material = new THREE.MeshNormalMaterial({
-    transparent: true,
-    opacity: 0.5,
-    side: THREE.DoubleSide,
-  });
+
+  let video = document.querySelector("#video");
+  video.play();
+
+  let texture = new THREE.VideoTexture(video);
+  texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
+  texture.minFilter = THREE.LinearFilter;
+  let material = new THREE.MeshBasicMaterial({ map: texture });
 
   let mesh = new THREE.Mesh(geometry, material);
   mesh.position.y = 0.5;
