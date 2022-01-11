@@ -15,7 +15,7 @@ function initialize() {
     antialias: true,
     alpha: true,
   });
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(640, 480);
   document.body.appendChild(renderer.domElement);
 
   clock = new THREE.Clock();
@@ -43,7 +43,7 @@ function initialize() {
   });
 
   arToolkitContext = new THREEx.ArToolkitContext({
-    cameraParametersUrl: "./data/camera_para.dat",
+    cameraParametersUrl: "../data/camera_para.dat",
     detectionMode: "mono",
   });
 
@@ -55,7 +55,7 @@ function initialize() {
   scene.add(markerRoot);
   arMarkerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
     type: "pattern",
-    patternUrl: "./data/pattern-logo.patt",
+    patternUrl: "../data/pattern-logo.patt",
   });
 
   let geometry = new THREE.BoxBufferGeometry(1, 1, 1);
